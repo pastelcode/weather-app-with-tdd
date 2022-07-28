@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:flutter_weather_app_with_tdd/domain/usecases/get_current_weather.dart';
-import 'package:flutter_weather_app_with_tdd/domain/entities/weather.dart';
+import 'package:flutter_weather_app_with_tdd/domain/usecases/usecases.dart';
+import 'package:flutter_weather_app_with_tdd/domain/entities/entities.dart';
 
 import '../../helpers/test_helper.mocks.dart';
 
