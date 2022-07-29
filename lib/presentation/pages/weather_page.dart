@@ -94,7 +94,7 @@ class WeatherPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                state.weather.temperature.toString(),
+                                '${state.weather.temperature} ºC',
                                 style: const TextStyle(
                                   fontSize: 16.0,
                                   letterSpacing: 1.2,
@@ -117,7 +117,7 @@ class WeatherPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                state.weather.pressure.toString(),
+                                '${state.weather.pressure} hPa',
                                 style: const TextStyle(
                                     fontSize: 16.0,
                                     letterSpacing: 1.2,
@@ -139,7 +139,7 @@ class WeatherPage extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                state.weather.humidity.toString(),
+                                '${state.weather.humidity}%',
                                 style: const TextStyle(
                                   fontSize: 16.0,
                                   letterSpacing: 1.2,
