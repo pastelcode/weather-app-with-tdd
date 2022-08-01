@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
             elevation: 0,
             toolbarHeight: 100,
             backgroundColor: Colors.white,
-            centerTitle: true,
           ),
           scaffoldBackgroundColor: Colors.white,
         ),

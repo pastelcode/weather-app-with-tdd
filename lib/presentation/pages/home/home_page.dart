@@ -17,11 +17,19 @@ class WeatherPage extends StatelessWidget {
       appBar: AppBar(
         title: Column(
           children: [
-            const Text(
-              'Weather',
-              style: TextStyle(
-                fontSize: 30,
-              ),
+            Row(
+              children: const <Widget>[
+                Text(
+                  'Weather',
+                  style: TextStyle(
+                    fontSize: 30,
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Icon(Icons.cloud),
+              ],
             ),
             Divider(
               color: Theme.of(context).primaryColor,

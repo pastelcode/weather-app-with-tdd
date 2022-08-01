@@ -39,6 +39,7 @@ class _SearchTextInputState extends State<SearchTextInput> {
           child: TextField(
             controller: _textController,
             textAlign: TextAlign.center,
+            textCapitalization: TextCapitalization.words,
             decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Guatemala',
