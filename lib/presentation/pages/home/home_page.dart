@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_weather_app_with_tdd/data/data.dart';
 import 'package:flutter_weather_app_with_tdd/presentation/pages/home/widgets/widgets.dart';
 import 'package:flutter_weather_app_with_tdd/presentation/presentation.dart';
@@ -18,32 +19,31 @@ class WeatherPage extends StatelessWidget {
         title: Column(
           children: [
             Row(
-              children: const <Widget>[
-                Text(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SvgPicture.asset(
+                  'assets/cloud-lightning.svg',
+                  height: kToolbarHeight - 10,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const Text(
                   'Weather',
                   style: TextStyle(
                     fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
                   ),
                 ),
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(Icons.cloud),
               ],
-            ),
-            Divider(
-              color: Theme.of(context).primaryColor,
-              height: 25,
-              thickness: 5,
             ),
           ],
         ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24.0,
-          ),
+          padding: const EdgeInsets.all(24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -53,7 +53,6 @@ class WeatherPage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline5,
               ),
               const Divider(),
-              _gap,
               const SearchTextInput(),
               _gap,
               Text(
@@ -65,8 +64,19 @@ class WeatherPage extends StatelessWidget {
               BlocBuilder<WeatherBloc, WeatherState>(
                 builder: (BuildContext context, WeatherState state) {
                   if (state is WeatherLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: const <Widget>[
+                            CircularProgressIndicator(),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Text('Getting weather...'),
+                          ],
+                        ),
+                      ),
                     );
                   } else if (state is WeatherHasData) {
                     return Column(
@@ -102,7 +112,7 @@ class WeatherPage extends StatelessWidget {
                         Table(
                           defaultColumnWidth: const FixedColumnWidth(150.0),
                           border: TableBorder.all(
-                            color: Colors.grey,
+                            color: Theme.of(context).primaryColor,
                             style: BorderStyle.solid,
                             width: 1,
                           ),
@@ -125,7 +135,6 @@ class WeatherPage extends StatelessWidget {
                                   style: const TextStyle(
                                     fontSize: 16.0,
                                     letterSpacing: 1.2,
-                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ), // Will be change later
@@ -146,9 +155,7 @@ class WeatherPage extends StatelessWidget {
                                 child: Text(
                                   '${state.weather.pressure} hPa',
                                   style: const TextStyle(
-                                      fontSize: 16.0,
-                                      letterSpacing: 1.2,
-                                      fontWeight: FontWeight.bold),
+                                      fontSize: 16.0, letterSpacing: 1.2),
                                 ),
                               ), // Will be change later
                             ]),
@@ -170,7 +177,6 @@ class WeatherPage extends StatelessWidget {
                                   style: const TextStyle(
                                     fontSize: 16.0,
                                     letterSpacing: 1.2,
-                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ), // Will be change later

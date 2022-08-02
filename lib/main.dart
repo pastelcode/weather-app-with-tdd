@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_weather_app_with_tdd/injection.dart'
     as dependency_injection;
 import 'package:flutter_weather_app_with_tdd/presentation/presentation.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,17 +26,25 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Weather app',
-        theme: ThemeData(
-          primarySwatch: Colors.orange,
-          appBarTheme: const AppBarTheme(
-            elevation: 0,
-            toolbarHeight: 100,
-            backgroundColor: Colors.white,
-          ),
-          scaffoldBackgroundColor: Colors.white,
-        ),
+        theme: _buildTheme(),
         home: const WeatherPage(),
       ),
+    );
+  }
+
+  ThemeData _buildTheme() {
+    const backgroundColor = Color.fromARGB(255, 255, 230, 167);
+    final baseTheme = ThemeData(
+      primarySwatch: Colors.brown,
+      appBarTheme: const AppBarTheme(
+        elevation: 0,
+        toolbarHeight: 100,
+        backgroundColor: Colors.transparent,
+      ),
+      scaffoldBackgroundColor: backgroundColor,
+    );
+    return baseTheme.copyWith(
+      textTheme: GoogleFonts.jetBrainsMonoTextTheme(baseTheme.textTheme),
     );
   }
 }
